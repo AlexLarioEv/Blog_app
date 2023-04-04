@@ -4,7 +4,6 @@ import { Dispatch } from "redux";
 import {
   TArticleAction,
   EArticleActionTypes,
-  IArticle,
 } from "../../types/article";
 
 export const fetchArticle = (
