@@ -1,0 +1,10 @@
+.heart {
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+
+  &__image {
+    box-sizing: content-box;
+    width: 100%;
+  }
+}

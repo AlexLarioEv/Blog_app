@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+  height: 80px;
+  font-family: Inter;
+  font-size: 18px;
+  line-height: 28px;
+  flex-shrink: 0;
+
+  &__authorization {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__login {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__user {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__imagebox {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__image {
+    box-sizing: content-box;
+    width: 100%;
+  }
+}
+
+.button {
+  font-family: Inter;
+  font-size: 18px;
+  line-height: 28px;
+}
+.green {
+  color: #52c41a;
+  border-color: #52c41a;
+}

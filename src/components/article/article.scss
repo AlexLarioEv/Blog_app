@@ -1,0 +1,101 @@
+.artical {
+  display: flex;
+  margin-bottom: 25px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 25px 20px;
+
+  &__content {
+    width: 680px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    color: #1890ff;
+    font-family: Inter;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &__like {
+    background: #ffffff;
+    margin-left: 15px;
+  }
+
+  &__fans {
+    margin-left: 5px;
+  }
+
+  &__tabs {
+    margin-bottom: 5px;
+  }
+
+  &__fans {
+    font-family: Inter;
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  &__description {
+    font-family: Inter;
+    color: #000000bf;
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  &__user {
+    width: 190px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  &__body {
+    font-family: Inter;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+.user {
+  height: 110px;
+
+  &__discription {
+    margin-right: 15px;
+    height: 50px;
+  }
+
+  &__name {
+    display: block;
+    font-family: Inter;
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0;
+  }
+
+  &__data {
+    font-family: Inter;
+    font-size: 12px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__imagebox {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__image {
+    box-sizing: content-box;
+    width: 100%;
+  }
+}
