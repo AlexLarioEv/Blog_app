@@ -1,1 +1,1 @@
-https://aviasales-app-alexlarioev.vercel.app 
+https://blog-platform-ruddy.vercel.app
