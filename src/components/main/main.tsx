@@ -5,8 +5,8 @@ import ListArticle from "../listArticle/listArticle";
 import useTypedSelector from "../../hooks/useTypedSelector";
 import Article from "../article/article";
 import ErrorMessage from "../errorMessage/errorMessage";
+import { SignUp } from "../sign/signUp";
 import { SignIn } from "../signIn/signIn";
-import { SignUp } from "../signUp/signUp";
 import { NewArticle } from "../newArticle/newArticle";
 
 import "./main.scss";
@@ -21,8 +21,8 @@ const Main: React.FC = () => {
         {article.error && (
           <ErrorMessage errorText={article.error}></ErrorMessage>
         )}
-        <Route path="/sign-in" component={SignIn}></Route>
         <Route path="/sign-up" component={SignUp}></Route>
+        <Route path="/sign-in" component={SignIn}></Route>
         <Route path="/profile" component={EditProfile}></Route>
         <Route path="/new-article" component={NewArticle}></Route>
         <Route

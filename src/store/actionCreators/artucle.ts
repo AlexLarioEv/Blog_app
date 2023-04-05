@@ -12,7 +12,6 @@ export const fetchArticle = (
   token?: string
 ) => {
   return async (dispatch: Dispatch<TArticleAction>) => {
-    dispatch({ type: EArticleActionTypes.FETCH_ARTICLE });
     const res = await fetch(
       `https://blog.kata.academy/api/articles?limit=${count}&offset=${offset}`,
       {
@@ -39,7 +38,6 @@ export const fetchArticle = (
 
 export const fetchArticleFull = (slug: string, token?: string) => {
   return async (dispatch: Dispatch<TArticleAction>) => {
-    dispatch({ type: EArticleActionTypes.FETCH_ARTICLE });
     const res = await fetch(`https://blog.kata.academy/api/articles/${slug}`, {
       method: "GET",
       headers: {
@@ -144,7 +142,6 @@ export const fetchFavoritesArticle = (
   favorited: boolean
 ) => {
   return async (dispatch: Dispatch<TArticleAction>) => {
-    dispatch({ type: EArticleActionTypes.FETCH_ARTICLE });
     const res = await fetch(
       `https://blog.kata.academy/api/articles/${slug}/favorite`,
       {
