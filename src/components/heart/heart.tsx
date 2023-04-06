@@ -1,38 +1,25 @@
-import React from "react";
+import React from 'react'
 
-import "./heart.scss";
+import './heart.scss'
 
 interface Props {
-  favorited: boolean;
+  favorited: boolean
 }
 
 const Heart: React.FC<Props> = (props) => {
-  const { favorited } = props;
+  const { favorited } = props
 
   return (
     <div className="heart">
       {favorited ? (
-        <svg
-          width="16"
-          height="14"
-          viewBox="0 0 16 14"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M8 2.56911C7.26154 1.33835 6.03077 0.476807 4.55385 0.476807C2.46154 0.476807 0.861542 2.07681 0.861542 4.16911C0.861542 8.23065 3.07693 8.84604 8 13.523C12.9231 8.84604 15.1385 8.23065 15.1385 4.16911C15.1385 2.07681 13.5385 0.476807 11.4462 0.476807C9.96923 0.476807 8.73846 1.33835 8 2.56911Z"
             fill="#FF0707"
           />
         </svg>
       ) : (
-        <svg
-          className="heart__image"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className="heart__image" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M7.99998 15.1099C7.7722 15.1099 7.5526 15.0273 7.38146 14.8774C6.73509 14.3123 6.11193
         13.7811 5.56212 13.3126L5.55932 13.3102C3.94738 11.9365 2.55542 10.7502 1.58691 9.58167C0.504272
@@ -56,7 +43,7 @@ const Heart: React.FC<Props> = (props) => {
         </svg>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Heart;
+export default Heart

@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react'
+import { Button } from 'antd'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-import { Button } from "antd";
-import { Link } from "react-router-dom";
-import useTypedSelector from "../../hooks/useTypedSelector";
-import { useDispatch } from "react-redux";
-import { EAuthenticationActionTypes } from "../../types/authentication";
+import useTypedSelector from '../../hooks/useTypedSelector'
+import { EAuthenticationActionTypes } from '../../types/authentication'
 
-import "./header.scss";
+import './header.scss'
 
 const Header: React.FC = () => {
-  const { authentication } = useTypedSelector((state) => state);
+  const { authentication } = useTypedSelector((state) => state)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onClick = () => {
-    localStorage.clear();
-    dispatch({ type: EAuthenticationActionTypes.FETCH_AUTHENTICATION_EXIET });
-  };
+    localStorage.clear()
+    dispatch({ type: EAuthenticationActionTypes.FETCH_AUTHENTICATION_EXIET })
+  }
 
   return (
     <header className="header">
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
       </Link>
       {authentication.login && (
         <div className="header__login">
-          <Link to={"/new-article"}>
+          <Link to={'/new-article'}>
             <Button className="button green" type="default">
               Create article
             </Button>
@@ -33,11 +33,7 @@ const Header: React.FC = () => {
           <Link className="header__info" to="/profile">
             <h2 className="header__user">{authentication.user.username}</h2>
             <div className="header__imagebox">
-              <img
-                className="header__image"
-                src={authentication.user.image}
-                alt="user"
-              />
+              <img className="header__image" src={authentication.user.image} alt="user" />
             </div>
           </Link>
           <Button className="button" type="default" onClick={onClick}>
@@ -47,12 +43,12 @@ const Header: React.FC = () => {
       )}
       {!authentication.login && (
         <div className="header__authorization">
-          <Link to={"/sign-in"}>
+          <Link to={'/sign-in'}>
             <Button className="button" type="text">
               Sign In
             </Button>
           </Link>
-          <Link to={"/sign-up"}>
+          <Link to={'/sign-up'}>
             <Button className="button green" type="default">
               Sign Up
             </Button>
@@ -60,7 +56,7 @@ const Header: React.FC = () => {
         </div>
       )}
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

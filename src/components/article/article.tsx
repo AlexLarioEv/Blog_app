@@ -1,60 +1,48 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import Heart from "../heart/heart";
-import { format } from "date-fns";
-import ReactMarkdown from "react-markdown";
-import { Button, Popconfirm } from "antd";
-import { Link } from "react-router-dom";
+/* eslint-disable @typescript-eslint/no-shadow */
+import React, { useEffect } from 'react'
+import { format } from 'date-fns'
+import ReactMarkdown from 'react-markdown'
+import { Button, Popconfirm } from 'antd'
+import { Link } from 'react-router-dom'
 
-import Tags from "../tag/tag";
-import useTypedSelector from "../../hooks/useTypedSelector";
+import Heart from '../heart/heart'
+import Tags from '../tag/tag'
+import useTypedSelector from '../../hooks/useTypedSelector'
+import useActions from '../../hooks/useActions'
+import Loader from '../loader/loader'
 
-import "./article.scss";
-import Loader from "../loader/loader";
-import useActions from "../../hooks/useActions";
+import './article.scss'
 
 interface IProps {
-  id: string;
+  id: string
 }
 
 const Article: React.FC<IProps> = (props) => {
-  const { fetchArticleFull, fetchDeleteArticle, fetchFavoritesArticle } =
-    useActions();
-  const { article, authentication } = useTypedSelector((state) => state);
-  const { articalFull } = article;
+  const { fetchArticleFull, fetchDeleteArticle, fetchFavoritesArticle } = useActions()
+  const { article, authentication } = useTypedSelector((state) => state)
+  const { articalFull } = article
 
-  const text = "Are you sure to delete this article?";
+  const text = 'Are you sure to delete this article?'
   const confirm = () => {
-    fetchDeleteArticle(authentication.user.token, props.id);
-  };
+    fetchDeleteArticle(authentication.user.token, props.id)
+  }
 
-  const {
-    title,
-    description,
-    body,
-    tagList,
-    createdAt,
-    favorited,
-    favoritesCount,
-    author,
-  } = articalFull;
+  const { title, description, body, tagList, createdAt, favorited, favoritesCount, author } = articalFull
 
   useEffect(() => {
-    authentication.login
-      ? fetchArticleFull(props.id, authentication.user.token)
-      : fetchArticleFull(props.id);
-  }, [authentication.login]);
+    authentication.login ? fetchArticleFull(props.id, authentication.user.token) : fetchArticleFull(props.id)
+  }, [authentication.login])
 
   const clickLike = () => {
-    fetchFavoritesArticle(authentication.user.token, props.id, favorited);
-  };
+    fetchFavoritesArticle(authentication.user.token, props.id, favorited)
+  }
 
   const cropText = (text: string, len: number) => {
     if (text.length > len) {
-      return `${text.slice(0, len)}...`;
+      return `${text.slice(0, len)}...`
     }
-    return text;
-  };
+    return text
+  }
 
   const content =
     article.loading === true ? (
@@ -64,11 +52,7 @@ const Article: React.FC<IProps> = (props) => {
         <div className="artical__content">
           <div className="artical__header">
             <h2 className="artical__title">{cropText(title, 15)}</h2>
-            <button
-              onClick={clickLike}
-              disabled={!authentication.login}
-              className="artical__like"
-            >
+            <button onClick={clickLike} disabled={!authentication.login} className="artical__like">
               <Heart favorited={favorited}></Heart>
             </button>
             <span className="artical__fans">{favoritesCount}</span>
@@ -82,40 +66,26 @@ const Article: React.FC<IProps> = (props) => {
         <div className="artical__user user">
           <div className="user__discription">
             <h2 className="user__name">{cropText(author.username, 10)}</h2>
-            <span className="user__data">
-              {format(new Date(createdAt), "LLLL, d, Y")}{" "}
-            </span>
+            <span className="user__data">{format(new Date(createdAt), 'LLLL, d, Y')} </span>
           </div>
           <div className="user__imagebox">
             <img className="user__image" src={author.image} alt="user" />
           </div>
-          <Popconfirm
-            placement="rightTop"
-            title={text}
-            onConfirm={confirm}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-              disabled={!authentication.login}
-              className="user__button red"
-            >
+          <Popconfirm placement="rightTop" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+            <Button disabled={!authentication.login} className="user__button red">
               Delete
             </Button>
           </Popconfirm>
           <Link to={`/articles/${props.id}/edit`}>
-            <Button
-              disabled={!authentication.login}
-              className="user__button green"
-            >
+            <Button disabled={!authentication.login} className="user__button green">
               Edit
             </Button>
           </Link>
         </div>
       </section>
-    );
+    )
 
-  return content;
-};
+  return content
+}
 
-export default Article;
+export default Article

@@ -1,11 +1,11 @@
-import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-import React from "react";
+import { Spin } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
+import React from 'react'
 
-import "./loader.scss";
+import './loader.scss'
 
-const antIcon = <LoadingOutlined style={{ fontSize: 96 }} spin />;
+const antIcon = <LoadingOutlined style={{ fontSize: 96 }} spin />
 
-const Loader: React.FC = () => <Spin className="loader" indicator={antIcon} />;
+const Loader: React.FC = () => <Spin className="loader" indicator={antIcon} />
 
-export default Loader;
+export default Loader

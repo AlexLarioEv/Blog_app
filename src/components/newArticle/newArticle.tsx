@@ -1,21 +1,22 @@
-import React from "react";
-import { useForm, useFieldArray } from "react-hook-form";
+import React from 'react'
+import { useForm, useFieldArray } from 'react-hook-form'
+import { Redirect } from 'react-router-dom'
 
-import "./newArticle.scss";
-import useActions from "../../hooks/useActions";
-import useTypedSelector from "../../hooks/useTypedSelector";
-import { Redirect } from "react-router-dom";
+import useActions from '../../hooks/useActions'
+import useTypedSelector from '../../hooks/useTypedSelector'
+
+import './newArticle.scss'
 
 type FormValues = {
-  title: string;
-  description: string;
-  body: string;
+  title: string
+  description: string
+  body: string
   cart: {
-    name: string;
-  }[];
-};
+    name: string
+  }[]
+}
 
-export function NewArticle() {
+function NewArticle() {
   const {
     register,
     handleSubmit,
@@ -23,23 +24,23 @@ export function NewArticle() {
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     defaultValues: {
-      title: "",
-      description: "",
-      body: "",
-      cart: [{ name: "" }],
+      title: '',
+      description: '',
+      body: '',
+      cart: [{ name: '' }],
     },
-  });
+  })
 
-  const { fetchNewArticle } = useActions();
-  const { authentication } = useTypedSelector((state) => state);
+  const { fetchNewArticle } = useActions()
+  const { authentication } = useTypedSelector((state) => state)
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "cart",
-  });
+    name: 'cart',
+  })
 
   const onSubmit = (data: FormValues) => {
-    const { title, description, body, cart } = data;
+    const { title, description, body, cart } = data
     const newData = {
       article: {
         title,
@@ -47,9 +48,9 @@ export function NewArticle() {
         body,
         tagList: cart.map((tag) => tag.name),
       },
-    };
-    fetchNewArticle(newData, authentication.user.token);
-  };
+    }
+    fetchNewArticle(newData, authentication.user.token)
+  }
 
   if (authentication.login) {
     return (
@@ -61,17 +62,17 @@ export function NewArticle() {
             <span className="input-article__name">Title</span>
             <input
               className="input-article__line"
-              {...register("title", {
-                required: "обязателен для заполнения",
+              {...register('title', {
+                required: 'обязателен для заполнения',
               })}
-              aria-invalid={errors["title"] ? "true" : "false"}
+              aria-invalid={errors.title ? 'true' : 'false'}
               placeholder="Title"
               type="text"
             />
           </label>
-          {errors["title"] && (
+          {errors.title && (
             <p className="input-article__error" role="alert">
-              {errors["title"]?.message}
+              {errors.title?.message}
             </p>
           )}
         </div>
@@ -81,17 +82,17 @@ export function NewArticle() {
             <span className="input-article__name">Short description</span>
             <input
               className="input-article__line"
-              {...register("description", {
-                required: "обязателен для заполнения",
+              {...register('description', {
+                required: 'обязателен для заполнения',
               })}
-              aria-invalid={errors["description"] ? "true" : "false"}
+              aria-invalid={errors.description ? 'true' : 'false'}
               placeholder="Title"
               type="text"
             />
           </label>
-          {errors["description"] && (
+          {errors.description && (
             <p className="input-article__error" role="alert">
-              {errors["description"]?.message}
+              {errors.description?.message}
             </p>
           )}
         </div>
@@ -101,16 +102,16 @@ export function NewArticle() {
             <span className="input-article__name">Text</span>
             <textarea
               className="input-article__textarea"
-              {...register("body", {
-                required: "обязателен для заполнения",
+              {...register('body', {
+                required: 'обязателен для заполнения',
               })}
-              aria-invalid={errors["body"] ? "true" : "false"}
+              aria-invalid={errors.body ? 'true' : 'false'}
               placeholder="Text"
             />
           </label>
-          {errors["body"] && (
+          {errors.body && (
             <p className="input-article__error" role="alert">
-              {errors["body"]?.message}
+              {errors.body?.message}
             </p>
           )}
         </div>
@@ -123,36 +124,32 @@ export function NewArticle() {
                   <input
                     className="card__line"
                     {...register(`cart.${index}.name`, {
-                      required: "обязателен для заполнения",
+                      required: 'обязателен для заполнения',
                     })}
                     placeholder="Tag"
                   />
                 </label>
-                <button
-                  className="card__button red"
-                  type="button"
-                  onClick={() => remove(index)}
-                >
+                <button className="card__button red" type="button" onClick={() => remove(index)}>
                   Delete
                 </button>
               </li>
-            );
+            )
           })}
           <button
             className="card__button blau"
             type="button"
             onClick={() => {
               append({
-                name: "",
-              });
+                name: '',
+              })
             }}
           >
             Add tag
           </button>
         </ul>
-        {errors["cart"] && (
+        {errors.cart && (
           <p className="input-article__error" role="alert">
-            {errors["cart"]?.message}обязательны для заполнения
+            {errors.cart?.message}обязательны для заполнения
           </p>
         )}
 
@@ -160,8 +157,9 @@ export function NewArticle() {
           Submit
         </button>
       </form>
-    );
-  } else {
-    return <Redirect to="/sign-up"></Redirect>;
+    )
   }
+  return <Redirect to="/sign-up"></Redirect>
 }
+
+export default NewArticle
