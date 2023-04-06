@@ -1,1 +1,1 @@
-https://blog-platform-alexlarioev.vercel.app
+https://blog-platform-alexlarioev.vercel.app 

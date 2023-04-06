@@ -15,7 +15,7 @@ type FormValues = {
 }
 
 type Props = {
-  match: any
+  match: { params: { id: string } }
 }
 
 const EditArticle: React.FC<Props> = (props) => {
@@ -46,7 +46,6 @@ const EditArticle: React.FC<Props> = (props) => {
         body,
       },
     }
-    console.log(newData, authentication.user.token, match.params.id)
     fetchEditArticle(newData, authentication.user.token, match.params.id)
   }
   if (authentication.login) {
