@@ -1,3 +1,20 @@
+export interface INewArticle {
+  article: {
+    title: string
+    description: string
+    body: string
+    tagList: string[]
+  }
+}
+
+export interface IEditArticle {
+  article: {
+    title: string
+    description: string
+    body: string
+  }
+}
+
 export interface IArticle {
   slug: string
   title: string

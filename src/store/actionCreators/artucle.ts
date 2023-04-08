@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-shadow */
 // eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 
-import { TArticleAction, EArticleActionTypes } from '../../types/article'
+import { TArticleAction, EArticleActionTypes, INewArticle, IEditArticle } from '../../types/article'
 
 export const fetchArticle = (count: number, offset = 0, token?: string) => {
   return async (dispatch: Dispatch<TArticleAction>) => {
@@ -51,7 +49,7 @@ export const fetchArticleFull = (slug: string, token?: string) => {
   }
 }
 
-export const fetchNewArticle = (data: {}, token: string) => {
+export const fetchNewArticle = (dataArticle: INewArticle, token: string) => {
   return async (dispatch: Dispatch<TArticleAction>) => {
     dispatch({ type: EArticleActionTypes.FETCH_ARTICLE })
     const res = await fetch('https://blog.kata.academy/api/articles', {
@@ -60,7 +58,7 @@ export const fetchNewArticle = (data: {}, token: string) => {
         Authorization: `Token ${token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(dataArticle),
     })
     if (res.ok) {
       const data = await res.json()
@@ -78,7 +76,7 @@ export const fetchNewArticle = (data: {}, token: string) => {
   }
 }
 
-export const fetchEditArticle = (data: {}, token: string, slug: string) => {
+export const fetchEditArticle = (dataArticle: IEditArticle, token: string, slug: string) => {
   return async (dispatch: Dispatch<TArticleAction>) => {
     dispatch({ type: EArticleActionTypes.FETCH_ARTICLE })
     const res = await fetch(`https://blog.kata.academy/api/articles/${slug}`, {
@@ -87,7 +85,7 @@ export const fetchEditArticle = (data: {}, token: string, slug: string) => {
         Authorization: `Token ${token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(dataArticle),
     })
     if (res.ok) {
       const data = await res.json()

@@ -25,7 +25,7 @@
     },
     "plugins": ["react", "prettier", "import","@typescript-eslint"],
     "rules": {
-      "indent": ["error", 2, { "flatTernaryExpressions": true, "SwitchCase": 1 }],
+      "indent": ["off", 2, { "flatTernaryExpressions": true, "SwitchCase": 1,  "ignoredNodes": ["ConditionalExpression"] }],
       "no-underscore-dangle": ["off", { "allowAfterThis": true }],
       "prettier/prettier": "error",
       "linebreak-style": [0, "unix"],
