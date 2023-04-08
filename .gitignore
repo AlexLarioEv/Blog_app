@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .prettierrc.json
+.lintstagedrc.json
 
 .vercel
 
